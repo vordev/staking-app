@@ -1,0 +1,110 @@
+.text {
+  &-title {
+    font-size: 2rem;
+    color: $white;
+    font-weight: bold;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 1em;
+    }
+  }
+
+  &-number {
+    display: block;
+    font-size: 1.8em;
+    font-weight: bold;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 1.5em;
+    }
+
+    &.small {
+      font-size: 1.4em;
+    }
+  }
+
+  &-error {
+    color: $red;
+    font-size: 1rem;
+    z-index: 1;
+  }
+
+  &-tiny {
+    font-size: 12px;
+    line-height: 130%;
+    z-index: 1;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 8px;
+    }
+  }
+
+  &-small {
+    font-size: 15px;
+    line-height: 130%;
+    z-index: 1;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 10px;
+    }
+  }
+
+  &-normal {
+    font-size: 18px;
+    line-height: 130%;
+    z-index: 1;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 12px;
+    }
+  }
+
+  &-medium {
+    font-size: 24px;
+    line-height: 130%;
+    z-index: 1;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 16px
+    }
+  }
+
+  &-large {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 130%;
+    z-index: 1;
+
+    @media screen and (max-width: $tablet) {
+      font-size: 28px;
+    }
+  }
+
+  &-red {
+    color: $red;
+  }
+
+  &-gray {
+    color: $gray;
+  }
+
+  &-blue {
+    color: $blue;
+  }
+
+  &-black {
+    color: $black;
+  }
+
+  &-green {
+    color: $green;
+  }
+
+  &-orange {
+    color: $orange;
+  }
+
+  &-center {
+    text-align: center;
+  }
+}

@@ -1,0 +1,109 @@
+.game {
+  &-header {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &-trade {
+    width: 80%;
+    margin-right: 20px;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0px 0px 50px rgba(7, 0, 255, 0.25) !important;
+    border-radius: 10px !important;
+
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+
+    & .chartjs-render-monitor {
+      z-index: 99999;
+    }
+  }
+
+  &-boost {
+    width: 20%;
+    background: rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0px 0px 50px rgba(7, 0, 255, 0.25) !important;
+    border-radius: 10px !important;
+    padding: 20px 20px;
+
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
+
+    &__select {
+      background: $dark-gray;
+      width: 130px;
+      height: 130px;
+      cursor: pointer;
+
+      &:last-child {
+        margin-left: 10px;
+      }
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      &.selected {
+        opacity: 0.5;
+      }
+    }
+
+    &__rate {
+      font-size: 14px;
+      line-height: 130%;
+      color: $dark-gray;
+      text-align: right;
+    }
+
+    &__pay {
+      width: 100%;
+    }
+
+    &__updown {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &-history {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0px 0px 50px rgba(7, 0, 255, 0.25) !important;
+    border-radius: 10px !important;
+    min-height: 400px;
+
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+
+    & .MuiTableContainer-root {
+      height: 100%;
+    }
+
+    & th, td {
+      color: $gray !important;
+      font-family: Bai Jamjuree !important;
+    }
+
+    & .MuiTableCell-root {
+      border-bottom: 1px solid rgba(132, 148, 156, 0.25) !important;
+    }
+  }
+
+  &-graph {
+    width: 25%;
+    padding: 10px 10px;
+    background: $light-gray;
+
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+    }
+  }
+}

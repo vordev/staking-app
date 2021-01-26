@@ -1,0 +1,11 @@
+html, body, #root {
+  line-height: 1.5;
+  margin: 0 !important;
+  font-family: Bai Jamjuree !important;
+  background: linear-gradient(180deg, $dark-blue 0%, $dark-blue 100%);
+  color: $white;
+}
+
+img {
+  z-index: 1;
+}

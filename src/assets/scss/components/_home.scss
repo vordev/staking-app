@@ -1,0 +1,205 @@
+.home {
+  &-container {
+    display: flex;
+
+    @media screen and (max-width: $desktop) {
+      display: block;
+    }
+  }
+
+  &-start {
+    display: flex;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 50px rgba(7, 0, 255, 0.25);
+    border-radius: 20px;
+    padding: 80px;
+    align-items: center;
+    margin-top: 100px;
+
+    @media screen and (max-width: $tablet) {
+      padding: 40px 20px;
+      display: block;
+      margin-top: 50px;
+    }
+
+    &__left {
+      width: 50%;
+      margin-right: 70px;
+
+      @media screen and (max-width: $tablet) {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+
+    &__right {
+      width: calc( 50% - 70px );
+
+      @media screen and (max-width: $tablet) {
+        width: 100%;
+      }
+    }
+
+    &__button {
+      @media screen and (max-width: $tablet) {
+        width: 100px;
+      }
+
+      &-group {
+        display: flex;
+
+        @media screen and (max-width: $tablet) {
+          justify-content: space-around;
+        }
+      }
+    }
+  }
+
+  &-info {
+    width: 100%;
+	  padding-top: 80px;
+	  padding-bottom: 40px;
+
+    @media screen and (max-width: $tablet) {
+      width: auto;
+      padding: 20px 15px 10px 15px;
+    }
+
+    &__container {
+
+      @media screen and (max-width: $tablet) {
+        width: 250px;
+      }
+    }
+  }
+
+  &-team {
+    position: relative;
+    padding: 100px 20px;
+
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
+
+    &__background {
+      width: calc(100% + 60px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-left: -30px;
+    }
+
+    &__button {
+      margin-left: 50px !important;
+
+      &:hover {
+        opacity: 0.6 !important;
+      }
+    }
+  }
+
+  &-stats {
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 50px rgba(7, 0, 255, 0.25);
+    border-radius: 10px;
+    padding: 40px;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    margin-top: 100px;
+
+    @media screen and (max-width: $tablet) {
+      display: block;
+      padding: 20px;
+      width: 80%;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    &__info {
+      margin-right: 70px;
+      display: block;
+
+      @media screen and (max-width: $tablet) {
+        margin-right: 0px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+
+  &-seo {
+    display: flex;
+    margin-top: 150px;
+    align-items: center;
+
+    @media screen and (max-width: $tablet) {
+      display: block;
+      margin-top: 70px;
+    }
+
+    &__left {
+      width: 50%;
+
+      @media screen and (max-width: $tablet) {
+        width: 100%;
+      }
+    }
+
+    &__right {
+      width: calc( 50% - 70px );
+      margin-left: 70px;
+
+      @media screen and (max-width: $tablet) {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+      }
+
+      &.responsive {
+        @media screen and (max-width: $tablet) {
+          width: 100%;
+          margin-left: 0;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    &.responsive {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &-guide {
+    margin-top: 150px;
+
+    @media screen and (max-width: $tablet) {
+      margin-top: 100px;
+    }
+
+    &__left {
+      width: 50%;
+      padding-right: 50px;
+
+      @media screen and (max-width: $tablet) {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+
+    &__right {
+      width: 50%;
+
+      @media screen and (max-width: $tablet) {
+        width: 100%;
+      }
+    }
+  }
+}

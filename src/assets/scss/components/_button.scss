@@ -1,0 +1,139 @@
+.btn {
+  &-header {
+    background: rgba(7, 0, 120, 0.75) !important;
+    color: #FFF !important;
+    border-radius: 7px !important;
+    box-shadow: 0px 0px 20px rgba(7, 0, 255, 0.5) !important;
+    font-family: Bai Jamjuree !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    padding: 7px 25px !important;
+
+    @media screen and (max-width: $tablet) {
+      display: none !important;
+    }
+  }
+
+  &-announce {
+    background: rgba(10, 10, 70, 0.55) !important;
+    color: #FFF !important;
+    border-radius: 10px !important;
+    font-family: Bai Jamjuree !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    height: 50px;
+    padding: 10px 50px !important;
+    font-size: 20px !important;
+  }
+
+  &-primary {
+    background: rgba(7, 0, 255, 0.75) !important;
+    color: $white !important;
+    border-radius: 3px !important;
+    box-shadow: 0px 0px 50px rgba(7, 0, 255, 0.5) !important;
+    font-family: Bai Jamjuree !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    width: 200px;
+    height: 50px;
+
+    &.Mui-disabled {
+      opacity: 0.5;
+    }
+
+    &.small {
+      width: 150px !important;
+      height: 35px !important;
+    }
+
+    &.exit {
+      width: 660px !important;
+
+      @media screen and (max-width: $tablet) {
+        width: 300px !important;
+      }
+    }
+  }
+
+  &-outlined {
+    border: 2px solid rgba(7, 0, 255, 0.75) !important;
+    color: $white !important;
+    padding: 5px !important;
+    min-width: 50px !important;
+    margin-left: 10px;
+    border-radius: 10px !important;
+    font-size: 10px !important;
+
+    &.Mui-disabled {
+      opacity: 0.5;
+    }
+  }
+
+  &-text {
+    color: $gray !important;
+    font-style: normal;
+    font-family: Bai Jamjuree !important;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18.75px;
+    text-transform: none !important;
+    padding: 10px 25px !important;
+
+    @media screen and (max-width: $tablet) {
+      padding: 5px 8px !important;
+    }
+
+    &.Mui-disabled {
+      color: rgba(0, 0, 0, 0.26) !important;
+    }
+
+    &:hover {
+      background-color: transparent !important;
+    }
+
+    & .MuiButton-label {
+      @media screen and (max-width: $tablet) {
+        font-size: 12px !important;
+      }
+    }
+  }
+ 
+
+  &-fab {
+    color: $white !important;
+    font-family: Bai Jamjuree !important;
+    text-transform: none !important;
+    background: rgba(7, 0, 255, 0.75) !important;
+    box-shadow: 0 0 80px rgba(7, 0, 255, 0.5) !important;
+
+    &.Mui-disabled {
+      opacity: 0.5;
+    }
+  }
+
+  &-stake__max {
+    background-color: $light-blue !important;
+    color: $white !important;
+    height: 20px;
+    margin-left: 10px !important;
+    font-size: 0.8rem !important;
+    border-radius: 10px !important;
+    margin-top: -3px !important;
+  }
+}
+
+.MuiButton-label {
+  font-family: Bai Jamjuree !important;
+}
+
+.MuiIconButton-root.Mui-disabled {
+  opacity: 0.25;
+}
+
+.MuiIconButton-root {
+  padding: 0px !important;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
