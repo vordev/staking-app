@@ -134,7 +134,7 @@ const PoolComposition: React.FC<Props> = ({
       <Header />
       <Container>
         <div className='flex-v screen-csenter'>
-          <div className='center-h mb-10' style={{ zIndex: 1 }}>
+          <div className='center-h mt-50 mb-10' style={{ zIndex: 1 }}>
             <div className='mr-30'>
               <img src={image1} width={70} alt='icon1' />
             </div>
@@ -148,6 +148,18 @@ const PoolComposition: React.FC<Props> = ({
             </div>
             <div className={`center-h text-small text-gray`}>
               <span>{`Deposit ${stakeTokenInfo.symbol} and earn ${rewardTokenInfo.symbol}`}</span>
+            </div>
+            <div className='center-h'>
+
+              <div className='flex-h'>
+                <a target='__blank' href='https://app.uniswap.org/#/add/0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca/ETH' style={{ color: 'rgb(246, 185, 68)' }}>
+                  Add Liquidity on Uniswap
+                </a>
+                <div className='mr-20' />
+                <a target='__blank' href='https://app.uniswap.org/#/remove/0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca/ETH' style={{ color: 'rgb(246, 185, 68)' }}>
+                  Remove Liquidity on Uniswap
+                </a>
+              </div>
             </div>
           </div>
           <div className='center-h mt-50'>
