@@ -8,7 +8,8 @@ import { Container, Header, Footer, ParticlesContainer } from 'components';
 import { RootState } from 'types';
 import { selectAccount } from 'store/account/accountSelector';
 import PoolCard from './PoolCard';
-import logoImage from 'assets/img/logo.png';
+import lockImage from 'assets/img/lock.png';
+import walletImage from 'assets/img/wallet.png';
 
 import { dexclient, web3client } from 'lib';
 import { formatPrice, numberWithDecimals } from 'utils';
@@ -71,14 +72,14 @@ const FarmComposition = ({ account }: Props) => {
           </div>
           <div className='center-h mt-50 mb-100'>
             <div className='card card-info mr-50'>
-              <img className='mt-10' src={logoImage} width={80} alt='MCP' />
+              <img src={walletImage} width={70} alt='MCP' />
               <div className='ml-20 mr-10'>
                 <div className='text-normal text-gray'>Your Available MCP Balance</div>
                 <div className='text-medium text-green mt-10'>{numberWithDecimals(account ? account.balance : 0, Config.Token.decimals, 3)}</div>
               </div>
             </div>
             <div className='card card-info'>
-              <img className='mt-10' src={logoImage} width={80} alt='MCP' />
+              <img src={lockImage} width={70} alt='MCP' />
               <div className='ml-20 mr-10'>
                 <div className='text-normal text-gray'>MCP Total Value Locked</div>
                 <div className='text-medium text-green mt-10'>{formatPrice(pool1TVL, 3)}</div>

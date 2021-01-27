@@ -28,11 +28,11 @@ const Header: React.FC<Props> = ({ account, history, loadAccount }: Props) => {
             <img src={Logo} width='70' alt='DOT' />
           </IconButton>
           <div className="flex-h">
-            <Button className='btn-text mr-120' href='https://mycryptoplay.com/' >Home</Button>
-            <Button className='btn-text' href='https://etherscan.io/address/0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca' >MCP Contract</Button>
-            <Button className='btn-text' href='https://app.uniswap.org/#/swap?inputCurrency=0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca' >Uniswap</Button>
-            <Button className='btn-text' href='https://twitter.com/mycryptoplay' >Twitter</Button>
-            <Button className='btn-text' href='https://t.me/mycryptoplaychat' >Telegram</Button>
+            <Button className='btn-text text-white mr-120' href='https://mycryptoplay.com/' >Home</Button>
+            <Button className='btn-text text-white' href='https://etherscan.io/address/0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca' >MCP Contract</Button>
+            <Button className='btn-text text-white' href='https://app.uniswap.org/#/swap?inputCurrency=0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca' >Uniswap</Button>
+            <Button className='btn-text text-white' href='https://twitter.com/mycryptoplay' >Twitter</Button>
+            <Button className='btn-text text-white' href='https://t.me/mycryptoplaychat' >Telegram</Button>
           </div>
           {account ? (
             <Button
