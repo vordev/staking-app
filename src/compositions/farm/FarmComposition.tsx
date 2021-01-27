@@ -98,6 +98,7 @@ const FarmComposition = ({ account }: Props) => {
               image2={Config.WethToken.image}
               poolUrl='/farm-wethlp'
               apy={pool1APY}
+              tvl={pool1TVL}
               isActive={true}
             />
             <PoolCard
@@ -106,6 +107,7 @@ const FarmComposition = ({ account }: Props) => {
               image2={Config.NerdzToken.image}
               poolUrl='/farm-nerdzlp'
               apy={0}
+              tvl={0}
               isActive={false}
             />
           </div>

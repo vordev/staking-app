@@ -25,6 +25,11 @@
 }
 
 
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .center-h {
   display: flex;
   justify-content: center;
@@ -172,6 +177,9 @@
 .mr-70 {
   margin-right: 70px !important;
 }
+.mr-100 {
+  margin-right: 100px !important;
+}
 .mr-120 {
   margin-right: 120px !important;
 }
@@ -262,4 +270,23 @@ h2 {
 
 .col-75 {
   width: 75%;
+}
+
+.MuiDialog-paperWidthSm {
+  max-width: 500px !important;
+  width: 500px !important;
+}
+
+.MuiDialogTitle-root {
+  border-bottom: 1px solid #ededed;
+}
+
+.MuiDialogContent-root {
+  padding: 36px 24px !important;
+}
+
+.MuiDialogActions-root {
+  background: rgba(134, 95, 223, 0.9) !important;
+  padding: 0 !important;
+  justify-content: center !important;
 }

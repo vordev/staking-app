@@ -40,31 +40,25 @@ const UnstakeDialog: React.FC<Props> = ({
   }
 
   const handleSetMax = () => {
-    const _balance = numberWithDecimals(staked, stakeToken.decimals, Config.Utils.decimals);
+    const _balance = numberWithDecimals(staked, stakeToken.decimals, Config.Utils.decimals, true);
     setUnstakeAmount(_balance.toString());
   }
 
   return (
     <Dialog onClose={onClose} open={open}>
         <DialogTitle>
-          <span className='text-small text-black'>
-            {dialogTitle}
-          </span>
+          {dialogTitle}
         </DialogTitle>
         <DialogContent>
-          <div className='mb-10 text-small text-black'>
-            Total staked {stakeToken.symbol} by Community is &nbsp;
-            <b>{numberWithDecimals(totalStaked, stakeToken.decimals, Config.Utils.decimals)}</b>
+          <div className='space-between'>
+            <span className='text-small text-black'>
+              Your Staked {stakeToken.symbol} Balance
+            </span>
+            <div className='flex-h'>
+              <b className='text-small text-black'>{numberWithDecimals(staked, stakeToken.decimals, Config.Utils.decimals)}</b>
+              <Button className='btn-stake__max' onClick={handleSetMax}>Max</Button>
+            </div>
           </div>
-          <span className='text-small text-black'>
-            Your {stakeToken.symbol} Balance is&nbsp;
-            <b>{numberWithDecimals(userBalance, stakeToken.decimals, Config.Utils.decimals)}</b>
-          </span>
-          <span className='text-small text-black'>
-            Your Staked {stakeToken.symbol} Balance is&nbsp;
-            <b>{numberWithDecimals(staked, stakeToken.decimals, Config.Utils.decimals)}</b>
-          </span>
-          <Button className='btn-stake__max' onClick={handleSetMax}>Max</Button>
           <TextField
             className='staking-input mt-50'
             variant='outlined'
@@ -75,10 +69,10 @@ const UnstakeDialog: React.FC<Props> = ({
           />
         </DialogContent>
         <DialogActions>
-          <Button className='btn-text' onClick={handleUnstake} >
+          <Button className='btn-modal' onClick={handleUnstake} >
             Withdraw
           </Button>
-          <Button className='btn-text' onClick={onClose} >
+          <Button className='btn-modal' onClick={onClose} >
             Cancel
           </Button>
         </DialogActions>

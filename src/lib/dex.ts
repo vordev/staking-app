@@ -34,6 +34,18 @@ const getWethLpTokenPrice = async () => {
   return 2 * ethPrice * wethBalance / totalSupply;
 }
 
+const getTokenPerLpToken = async () => {
+  const totalSupply = await web3client.getTotalSupply(web3client.wethLpTokenContract);
+  const tokenBalance = await web3client.getBalance(web3client.tokenContract, Config.WethLpToken.address);
+  return tokenBalance / totalSupply;
+}
+
+const getWethPerLpToken = async () => {
+  const totalSupply = await web3client.getTotalSupply(web3client.wethLpTokenContract);
+  const wethBalance = await web3client.getBalance(web3client.wethTokenContract, Config.WethLpToken.address);
+  return wethBalance / totalSupply;
+}
+
 const getNerdzLpTokenPrice = async () => {
   const totalSupply = await web3client.getTotalSupply(web3client.nerdzLpTokenContract);
   const wethBalance = await web3client.getBalance(web3client.wethTokenContract, Config.NerdzLpToken.address);
@@ -46,4 +58,6 @@ export default {
   getEthPrice,
   getWethLpTokenPrice,
   getNerdzLpTokenPrice,
+  getTokenPerLpToken,
+  getWethPerLpToken,
 };

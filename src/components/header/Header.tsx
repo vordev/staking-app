@@ -21,25 +21,34 @@ type Props = StateFromProps & DispatchFromProps & RouteComponentProps;
 
 const Header: React.FC<Props> = ({ account, history, loadAccount }: Props) => {
   return (
-    <Container>
-      <div className="nav-header" style={{ zIndex: 1 }}>
-        <IconButton className='nav-header__logo' onClick={() => history.push('/')}>
-			    <img src={Logo} width='70' alt='DOT' />
-        </IconButton>
-        {account ? (
-          <Button
-            variant='contained'
-            className='btn-header'
-            href={`${Config.etherscan}${account.address}`}
-            target='_blank'
-          >{truncateAddress(account.address)}</Button>
-        ) : (
-          <Button onClick={loadAccount} className='btn-header' >
-            Unlock Wallet
-          </Button>
-        )}
-      </div>
-    </Container>
+    <div className='header'>
+      <Container>
+        <div className="nav-header" style={{ zIndex: 1 }}>
+          <IconButton className='nav-header__logo' onClick={() => history.push('/')}>
+            <img src={Logo} width='70' alt='DOT' />
+          </IconButton>
+          <div className="flex-h">
+            <Button className='btn-text mr-120' href='https://mycryptoplay.com/' >Home</Button>
+            <Button className='btn-text' href='https://etherscan.io/address/0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca' >MCP Contract</Button>
+            <Button className='btn-text' href='https://app.uniswap.org/#/swap?inputCurrency=0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca' >Uniswap</Button>
+            <Button className='btn-text' href='https://twitter.com/mycryptoplay' >Twitter</Button>
+            <Button className='btn-text' href='https://t.me/mycryptoplaychat' >Telegram</Button>
+          </div>
+          {account ? (
+            <Button
+              variant='contained'
+              className='btn-header'
+              href={`${Config.etherscan}${account.address}`}
+              target='_blank'
+            >{truncateAddress(account.address)}</Button>
+          ) : (
+            <Button onClick={loadAccount} className='btn-header' >
+              Unlock Wallet
+            </Button>
+          )}
+        </div>
+      </Container>
+    </div>
   )
 }
 

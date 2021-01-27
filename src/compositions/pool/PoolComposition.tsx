@@ -25,8 +25,9 @@ import {
   selectPoolRewardTokenInfo
 } from 'store/pool/poolSelector';
 import { selectAccount } from 'store/account/accountSelector';
-import { getDateLeft } from 'utils';
+import { getDateLeft, numberWithDecimals, formatPrice } from 'utils';
 import logoImage from 'assets/img/logo.png';
+import { dexclient, web3client } from 'lib';
 
 interface StateFromProps {
   account: ReturnType<typeof selectAccount>;
@@ -78,7 +79,18 @@ const PoolComposition: React.FC<Props> = ({
   image2
 }) => {
   const [timeLeft, setTimeLeft] = React.useState<number>(0);
+  const [tokenPrice, setTokenPrice] = React.useState<number>(0);
+  const [tokenPerLpRate, setTokenPerLpRate] = React.useState<number>(0);
+  const [wethPerLpRate, setWethPerLpRate] = React.useState<number>(0);
+  const [rewardPerBlock, setRewardPerBlock] = React.useState<number>(0);
+  const [apy, setApy] = React.useState<number>(0);
 
+  useEffect(() => {
+    dexclient.getTokenPrice().then(res => setTokenPrice(res));
+    dexclient.getTokenPerLpToken().then(res => setTokenPerLpRate(res));
+    dexclient.getWethPerLpToken().then(res => setWethPerLpRate(res));
+    web3client.pool1Contract.methods.rewardRate().call().then((res: number) => setRewardPerBlock(res * 15 / Math.pow(10, 18)));
+  });
   useEffect(() => setTimeLeft(getDateLeft(deadline)), [deadline]);
   useEffect(() => {
     const timeInterval = setInterval(() => setTimeLeft(getDateLeft(deadline)), 1000);
@@ -89,6 +101,16 @@ const PoolComposition: React.FC<Props> = ({
     const timeInterval = setInterval(() => { loadEarned(); loadStaked(); }, 60000);
     return () => clearInterval(timeInterval);
   });
+  useEffect(() => {
+    if (tokenPrice > 0) {
+      dexclient.getWethLpTokenPrice().then(price => {
+        web3client.poolGetRewardRate(web3client.pool1Contract).then(res => {
+          const roi = res * tokenPrice / Math.pow(10, 18) / price * 86400 * 365 * 100;
+          setApy(roi);
+        });
+      });
+    }
+  }, [tokenPrice]);
 
 
   if (!account) {
@@ -128,7 +150,32 @@ const PoolComposition: React.FC<Props> = ({
               <span>{`Deposit ${stakeTokenInfo.symbol} and earn ${rewardTokenInfo.symbol}`}</span>
             </div>
           </div>
-          <div className='center-h wp-100 mt-50 home-container'>
+          <div className='center-h mt-50'>
+            <div className='card card-info' style={{ width: 640 }}>
+              <div className='flex-h'>
+                <div className='mr-100'>
+                  <div className='text-small text-green mb-20'>APY</div>
+                  <div className='text-small'>{apy.toFixed(2)}%</div>
+                </div>
+                <div className='mr-100'>
+                  <div className='text-small text-green mb-20'>Total Staked LP Token</div>
+                  <div className='text-small mb-10'>
+                    {numberWithDecimals(totalStaked * tokenPerLpRate, 18, 3)} MCP  +  {numberWithDecimals(totalStaked * wethPerLpRate, 18, 3)} WETH
+                  </div>
+                  <div className='text-small text-gray'>{numberWithDecimals(totalStaked, 18, 3)} MCP-WETH LP</div>
+                </div>
+                <div>
+                  <div className='text-small text-green mb-20'>Average Reward per block</div>
+                  <div className='text-small mb-10'>{numberWithDecimals(rewardPerBlock, 18, 3)} MCP</div>
+                  <div className='text-small text-gray'>= {formatPrice(tokenPrice * rewardPerBlock, 2)}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='center-h mt-50'>
+            <div className='text-medium text-gray'>YOUR STAKING</div>
+          </div>
+          <div className='center-h wp-100 mt-30 home-container'>
             <RewardAsset
               rewardToken={rewardTokenInfo}
               earned={0}
@@ -158,7 +205,7 @@ const PoolComposition: React.FC<Props> = ({
               <span role='img' aria-label='pointer'>👉</span> Liquidity Token is locked and withdrawals will be available 15 days after depositing to the pool!
             </div>
             <div className='text-small text-orange text-center center-h mt-10'>
-              <span role='img' aria-label='pointer'>👉</span> 50% of your PIS rewards will be unlocked immediately when harvesting. The remaining 50% will be unlocked within the next 15 days!
+              <span role='img' aria-label='pointer'>👉</span> 50% of your MCP rewards will be unlocked immediately when harvesting. The remaining 50% will be unlocked within the next 15 days!
             </div>
           </div>
           <div className='center-h mb-50'>
@@ -166,8 +213,19 @@ const PoolComposition: React.FC<Props> = ({
               <div className='text-small mb-10'>MAYBE YOU DON'T KNOW</div>
               <div className='card card-tip'>
                 <img src={logoImage} width={70} alt='MCP' />
-                <div className='text-small ml-20'>
-                  Add/Remove liquidity to <span className='text-orange'>MCP-ETH pair</span> on UniSwap to get <span className='text-orange'>MCP-ETH UNI-V2</span> tokens. Then deposit those LP tokens to receive rewards
+                <div className='ml-20'>
+                  <div className='text-small mb-10'>
+                    Add/Remove liquidity to <span className='text-orange'>MCP-ETH pair</span> on UniSwap to get <span className='text-orange'>MCP-ETH UNI-V2</span> tokens. Then deposit those LP tokens to receive rewards
+                  </div>
+                  <div className='flex-h'>
+                    <a target='__blank' href='https://app.uniswap.org/#/add/0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca/ETH' style={{ color: 'rgb(246, 185, 68)' }}>
+                      Add Liquidity on Uniswap
+                    </a>
+                    <div className='mr-20' />
+                    <a target='__blank' href='https://app.uniswap.org/#/remove/0x2186ecb39f1b765ba7d78f1c43c2e9d7fc0c1eca/ETH' style={{ color: 'rgb(246, 185, 68)' }}>
+                      Remove Liquidity on Uniswap
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

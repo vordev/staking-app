@@ -6,10 +6,7 @@ import Config from 'config';
 interface OwnProps {
   open: boolean;
   dialogTitle: React.ReactElement;
-  poolBalance: number;
   stakeToken: any;
-  rewardToken: any;
-  totalStaked: number;
   userBalance: number;
   onClose: () => void;
   onStake: (amount: number) => void;
@@ -20,10 +17,7 @@ type Props = OwnProps;
 const StakeDialog: React.FC<Props> = ({
   open,
   dialogTitle,
-  poolBalance,
   stakeToken,
-  rewardToken,
-  totalStaked,
   userBalance,
   onClose,
   onStake,
@@ -49,23 +43,18 @@ const StakeDialog: React.FC<Props> = ({
   return (
     <Dialog onClose={onClose} open={open}>
         <DialogTitle>
-          <span className='text-small text-black'>
-            {dialogTitle}
-          </span>
+          {dialogTitle}
         </DialogTitle>
         <DialogContent>
-          <div className='mb-10 text-small text-black'>
-            Community distributes <b>{poolBalance}</b>&nbsp; {rewardToken.symbol} as rewards
+          <div className='space-between'>
+            <span className='text-small text-black'>
+              {stakeToken.symbol} Balance
+            </span>
+            <div className='flex-h'>
+              <b className='text-small text-black'>{numberWithDecimals(userBalance, stakeToken.decimals, Config.Utils.decimals)}</b>
+              <Button className='btn-stake__max' onClick={handleSetMax}>Max</Button>
+            </div>
           </div>
-          <div className='mb-10 text-black'>
-            Total staked {stakeToken.symbol} by Community is &nbsp;
-            <b>{numberWithDecimals(totalStaked, stakeToken.decimals, Config.Utils.decimals)}</b>
-          </div>
-          <span className='text-black text-black'>
-            Your {stakeToken.symbol} Balance is&nbsp;
-            <b>{numberWithDecimals(userBalance, stakeToken.decimals, Config.Utils.decimals)}</b>&nbsp;
-          </span>
-          <Button className='btn-stake__max' onClick={handleSetMax}>Max</Button>
           <TextField
             className='staking-input mt-50'
             variant='outlined'
@@ -76,10 +65,10 @@ const StakeDialog: React.FC<Props> = ({
           />
         </DialogContent>
         <DialogActions>
-          <Button className='btn-text' onClick={handleStake} >
+          <Button className='btn-modal' onClick={handleStake} >
             Stake
           </Button>
-          <Button className='btn-text' onClick={onClose} >
+          <Button className='btn-modal' onClick={onClose} >
             Cancel
           </Button>
         </DialogActions>

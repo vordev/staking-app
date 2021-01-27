@@ -26,6 +26,7 @@ function* setAccountSaga() {
 
 function* accountSagaWatcher() {
   yield takeLatest(ActionType.LOAD_ACCOUNT as any, setAccountSaga);
+  yield takeLatest(ActionType.INIT_STORE as any, setAccountSaga);
 }
 
 export default [

@@ -34,7 +34,7 @@
     font-family: Bai Jamjuree !important;
     font-weight: 400 !important;
     text-transform: none !important;
-    width: 200px;
+    width: 240px;
     height: 50px;
 
     &.Mui-disabled {
@@ -112,13 +112,25 @@
   }
 
   &-stake__max {
-    background-color: $light-blue !important;
+    background-color: $purple !important;
     color: $white !important;
     height: 20px;
     margin-left: 10px !important;
     font-size: 0.8rem !important;
-    border-radius: 10px !important;
-    margin-top: -3px !important;
+    border-radius: 5px !important;
+  }
+
+  &-modal {
+    color: white !important;
+    font-size: 22px !important;
+    background: rgba(134, 95, 223, 0.9) !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    padding: 6px 25px !important;
+
+    &:hover {
+      background-color: transparent !important;
+    }
   }
 }
 
