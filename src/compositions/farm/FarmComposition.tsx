@@ -34,12 +34,12 @@ const FarmComposition = ({ account }: Props) => {
   useEffect(() => {
     if (tokenPrice > 0) {
       dexclient.getWethLpTokenPrice().then(price => {
-        web3client.poolGetRewardRate(web3client.pool1Contract).then(res => {
-          const roi = res * tokenPrice / Math.pow(10, 18) / price * 86400 * 365 * 100;
-          setPool1APY(roi);
-        });
         web3client.getTotalSupply(web3client.pool1Contract).then(amount => {
           setPool1TVL(price * amount / Math.pow(10, Config.WethLpToken.decimals));
+          web3client.poolGetRewardRate(web3client.pool1Contract).then(res => {
+            const roi = res * tokenPrice / amount / price * 86400 * 365 * 100;
+            setPool1APY(roi);
+          });
         });
       });
 
@@ -63,7 +63,7 @@ const FarmComposition = ({ account }: Props) => {
       <Container>
         <div className='flex-v'>
           <div className='center-h mt-30'>
-            <Button variant='contained' className='btn-announce'>
+            <Button variant='contained' className='btn-announce' target='__blank'  href='https://mycryptoplay.medium.com/mycryptoplay-staking-468d5b80c0fb'>
               Read The Announcement
             </Button>
           </div>
