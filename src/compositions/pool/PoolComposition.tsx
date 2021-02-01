@@ -105,12 +105,12 @@ const PoolComposition: React.FC<Props> = ({
     if (tokenPrice > 0) {
       dexclient.getWethLpTokenPrice().then(price => {
         web3client.poolGetRewardRate(web3client.pool1Contract).then(res => {
-          const roi = res * tokenPrice / Math.pow(10, 18) / price * 86400 * 365 * 100;
+          const roi = res * tokenPrice / totalStaked / price * 86400 * 365 * 100;
           setApy(roi);
         });
       });
     }
-  }, [tokenPrice]);
+  }, [tokenPrice, totalStaked]);
 
 
   if (!account) {
@@ -178,7 +178,7 @@ const PoolComposition: React.FC<Props> = ({
                 </div>
                 <div>
                   <div className='text-small text-green mb-20'>Average Reward per block</div>
-                  <div className='text-small mb-10'>{numberWithDecimals(rewardPerBlock, 18, 3)} MCP</div>
+                  <div className='text-small mb-10'>{numberWithDecimals(rewardPerBlock, 0, 3)} MCP</div>
                   <div className='text-small text-gray'>= {formatPrice(tokenPrice * rewardPerBlock, 2)}</div>
                 </div>
               </div>
@@ -190,7 +190,7 @@ const PoolComposition: React.FC<Props> = ({
           <div className='center-h wp-100 mt-30 home-container'>
             <RewardAsset
               rewardToken={rewardTokenInfo}
-              earned={0}
+              earned={earned}
               started={timeLeft > 0}
               percent={1}
               onHarvest={harvest}
